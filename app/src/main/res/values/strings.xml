@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WordsApp</string>
+    <string name="home_screen_title">home</string>
+    <string name="edit_screen_title">edit</string>
+    <string name="settings_screen_title">settings</string>
 </resources>
