@@ -24,7 +24,7 @@ fun EditScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (isEditing) "Edit Word" else "Add Word") }
+                title = { Text(if (isEditing) "Үг шинэчлэх" else "Үг нэмэх") }
             )
         }
     ) { padding ->
@@ -38,7 +38,7 @@ fun EditScreen(
             OutlinedTextField(
                 value = foreignWord,
                 onValueChange = { foreignWord = it },
-                label = { Text("Foreign Word") },
+                label = { Text("Гадаад үг") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -47,7 +47,7 @@ fun EditScreen(
             OutlinedTextField(
                 value = mongolianWord,
                 onValueChange = { mongolianWord = it },
-                label = { Text("Mongolian Word") },
+                label = { Text("Монгол үг") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -72,7 +72,7 @@ fun EditScreen(
                 modifier = Modifier.fillMaxWidth(),
                 enabled = foreignWord.isNotBlank() && mongolianWord.isNotBlank()
             ) {
-                Text(if (isEditing) "Update Word" else "Add Word")
+                Text(if (isEditing) "ШИНЭЧЛЭХ" else "НЭМЭХ")
             }
         }
     }

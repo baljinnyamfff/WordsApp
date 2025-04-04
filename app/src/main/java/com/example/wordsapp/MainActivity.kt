@@ -13,11 +13,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.wordsapp.data.NotificationWorker
 import com.example.wordsapp.ui.theme.WordsAppTheme
+import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        scheduleNotification()
+
         enableEdgeToEdge()
         setContent {
             WordsAppTheme {
@@ -29,6 +37,17 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+    private fun scheduleNotification(){
+        val workRequest = PeriodicWorkRequestBuilder<NotificationWorker>(24, TimeUnit.HOURS)
+            .setInitialDelay(2, TimeUnit.SECONDS)
+            .build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "WordsApp notification",
+            ExistingPeriodicWorkPolicy.KEEP,
+            workRequest
+        )
     }
 }
 

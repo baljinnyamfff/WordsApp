@@ -50,7 +50,6 @@ fun WordsApp() {
                     viewModel = viewModel,
                     onNavigateBack = {navController.popBackStack()}
                 )
-
             }
             composable(SettingsScreenDestination.route){
                 SettingsScreen(
